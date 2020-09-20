@@ -1,26 +1,55 @@
 let xhr = new XMLHttpRequest();
+let message = document.querySelector('.messages');
 
-let results = document.querySelector('.results')
-let total = document.querySelector('.total')
-let user = document.querySelector('#user').value;
+document.querySelector('.btn').addEventListener('click', searchRepository);
 
-document.querySelector('.btn').addEventListener('click', (e) => {
+function searchRepository(e) {
     e.preventDefault()
 
+    let user = document.querySelector('#user').value;
     xhr.open('GET', `https://api.github.com/users/${user}/repos`);
 
     xhr.onload = () => {
         let data = JSON.parse(xhr.responseText)
-        console.log(data);
+        clearResults()
 
-        data.map(item => {
-            let li = document.createElement('li')
-            li.innerHTML = item.name
-            results.appendChild(li)
-            total.innerHTML = data.length
-        })
+        if (xhr.status === 200) {
+            sucessMessage(data);
 
+            data.map((item, i) => {
+                createLi(data[i].clone_url, item.name)
+            })
+        }
+
+        if (xhr.status === 404) failMessage();
     }
 
     xhr.send()
-})
+}
+
+function createLi(data, item) {
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+
+    a.setAttribute('href', data);    
+    a.innerHTML = item;
+
+    li.appendChild(a);
+    document.querySelector('.results').appendChild(li)
+}
+
+function clearResults() {
+    document.querySelector('.results').innerHTML = ''
+}
+
+function sucessMessage(data) {
+    message.classList.remove('fail')
+    message.classList.add('sucess')
+    message.innerHTML = `${data.length} repositórios carregados com sucesso`
+}
+
+function failMessage() {
+    message.classList.add('fail')
+    message.classList.remove('sucess')
+    message.innerHTML = 'Repositórios não encontrado'
+}

@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {        
+    flex: 1;
+}
+
+#page-header, #page-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    text-align: center;
+    height: 80px;
+    color: #0008;
+}
+
+.container {
+    display: flex;    
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.input-block {    
+    display: flex;        
+    justify-content: center;
+    align-items: center;
+}
+
+.input-block label {
+    font-weight: bold;  
+    margin-right: 1rem;              
+}
+
+.input-block input {
+    font-size: 1rem;
+    margin-right: 1rem;
+    padding: 0.6rem;
+    border: none;
+    border-bottom: 3px solid #4e54c8;
+}
+
+.input-block button {    
+    height: 35px;
+    width: 120px;    
+    border: none;
+    border-radius: 5px;
+    background-color: #8f94fb;
+    color: #fff;    
+    font-size: 1rem;    
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-block button:hover {
+    background-color: #222bd4;
+}
+
+.messages, .total {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.sucess {
+    color: #00FF7F;
+}
+
+.fail {
+    color: #DC143C;
+}
+
+.results {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+}
+
+.results li {
+    padding: 0.8rem;
+    border-left: 3px solid #8f94fb;
+}
+
+#page-footer {
+    height: 40px;    
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 800px){
+    .results {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

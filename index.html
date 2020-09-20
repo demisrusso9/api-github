@@ -5,31 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repositórios de Usuários</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h1>Repositórios de Usuários do GITHUB</h1>
+    <header id="page-header">
+        <h1>Repositórios do GITHUB</h1>
     </header>
-
+    
     <main>
-        <form>
+        <form class="container">
             <div class="input-block">
-                <label for="user">Nome do Usuário: </label>
+                <label for="user">Username </label>
                 <input id="user" type="text">
 
                 <button class="btn">Procurar</button>
             </div>
 
-            <p id="messages"></p>
+            <p class="messages"></p>            
 
-            <div class="results">
-                <p class="total"></p>
-            </div>
+            <ul class="results"></ul>
         </form>
     </main>
 
-    <footer>
+    <footer id="page-footer">
         Demis Russo Mendes da Silva Junior
     </footer>
 
